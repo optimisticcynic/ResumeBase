@@ -1,0 +1,251 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[11pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+\newcommand{\paper}[8]{
+  \emph{#1}, #2 \href{#3}{#4 \textbf{#5} #6 (#7)}, \href{http://arxiv.org/abs/#8}{arXiv:~#8}
+}
+% modern themes
+\moderncvstyle{classic}                            % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{grey}                                % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[scale=0.75]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+\usepackage{import}
+
+% personal data
+\name{Zachary}{Lesko}                             % optional, remove / comment the line if not wanted
+\phone[mobile]{621-889-2060}     % optional, remove / comment the line if not wanted
+%\phone[fax]{+3~(456)~789~012}                      % optional, remove / comment the line if not wanted
+\email{zachary.j.lesko@gmail.com}                               % optional, remove / comment the line if not wanted
+\homepage{www.linkedin.com/in/zachary-lesko}                         % optional, remove / comment the line if not wanted
+%\extrainfo{additional information}                 % optional, remove / comment the line if not wanted
+%\photo[64pt][0.4pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+%\quote{Some quote}                                 % optional, remove / comment the line if not wanted
+
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
+% Provide an alternative to \cventry which makes use of a minipage which
+% cannot be broken across page boundaries.
+%
+% Based on the answer provided at https://tex.stackexchange.com/a/403557.
+\usepackage{letltxmacro}
+\usepackage{xpatch}
+\LetLtxMacro{\cvitemlong}{\cvitem}
+\xpatchcmd{\cvitemlong}{\addvspace{#1}}{}{}{}
+\makeatletter
+\newcommand*{\cventrylong}[7][.25em]{%
+
+\cvitemlong[#1]{\parbox[t][0pt]{\hintscolumnwidth}{\raggedleft\hintstyle 
+#2}}{%
+     {\bfseries#3}%
+     \ifthenelse{\equal{#4}{}}{}{, {\slshape#4}}%
+     \ifthenelse{\equal{#5}{}}{}{, #5}%
+     \ifthenelse{\equal{#6}{}}{}{, #6}%
+     .\strut%
+   }%
+   \if\relax\detokenize{#7}\relax%
+   \else{%
+     \addvspace{3pt}\nobreak\@afterheading%
+     \small%
+     \begin{list}{}{%
+       \setlength{\topsep}{0pt}%
+       \setlength{\labelwidth}{0pt}%
+       \setlength{\leftmargin}{\hintscolumnwidth+\separatorcolumnwidth}%
+     }%
+       \item #7%
+     \end{list}%
+   }%
+   \fi%
+   \par\addvspace{#1}%
+}
+\makeatother
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+
+%\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
+%-----       resume       ---------------------------------------------------------
+\makecvtitle
+\vspace{-7ex}
+\section{Summary of Qualifications}
+\begin{itemize}
+    \item Graduated with a Ph.D. in high energy particle physics.
+    \item Analyzed large data sets while researching at the Large Hadron Collider (LHC) to test and improve simulations.
+    \item Experience programming in Python and C++ in both the analysis and production of data sets.
+    %Background in detailed analysis of complex systems involving large datasets, guided by physically-based conceptual models
+\end{itemize}
+\section{Skills}
+
+
+\vspace{6pt}
+\cvline{Programming languages}{C, C++, ROOT, Visual Basic}
+\cvline{Scripting languages}{Python, bash, MATLAB, Perl}
+\cvline{Applications}{Microsoft Office, Git, Mathematica, LaTeX, PYTHIA particle generator}
+\cvline{Other}{Effective communication of analytical results in-person and electronically in a multinational collaboration; problem solving; prototype algorithms for large scale data processing; experienced teaching diverse classrooms }
+\vspace{2pt}
+\vspace{-2ex}
+
+\section{Education}
+
+% \vspace{5pt}
+
+% \subsection{Academic Qualifications}
+
+\vspace{5pt}
+
+\cventrylong{2012--2019}{Ph.D, Physics: GPA 3.5}{University of Minnesota}{Minneapolis, MN}{}{}
+%\cvline{advisor}{\small{Jeremiah Mans}}
+%\cvline{thesis title}{\small{\textit{}}}
+\vspace{5pt}
+
+\cventrylong{2010--2012}{B.S. Physics, Mathematics: GPA 3.5}{Minnesota State University}{Mankato, MN}{}{}
+\cvline{}{\small{\textit{Magna cum laude}}}
+\cventrylong{2008--2010}{A.A. Physics, Mathematics: GPA 3.6}{Normandale Community College }{Bloomington, MN}{}{}
+\cvline{}{\small{\textit{}}}
+
+\vspace{-4ex}
+
+\section{Work Experience}
+
+\vspace{6pt}
+
+\cventrylong{2013--Present}{Research Assistant-Compact Muon Solenoid (CMS) experiment}{University of Minnesota}{Minneapolis, MN}{}{\vspace{3pt}
+\begin{itemize}
+    \item Performed upgrades of the CMS detector in France through the installation and testing of new hardware. Added functionality to the graphical interface.
+    \item Worked as the expert on-call to diagnose and fix problems in the data-taking software and hardware of CMS.
+    \item Worked to design and create C++ software to preform analytics: discriminate whether to save data or discard it on an event-by-event basis,  allowing for a larger amount of useful data to be collected, which is used in creating new datasets.
+    \item Modified simulation software with an innovative algorithm modeling new 
+parameter values, allowing the examination of relationship between the parameters and measured variables.
+    \item Implemented simulations on component upgrades to the CMS detector forecasting their effect on possible new measurements.
+    %\item Experienced traveling multi-nationally
+    \item Worked with people in multiple cultures and time-zones on a cooperative project. 
+\end{itemize}
+}
+
+
+\cventrylong{2012--Present}{Teaching Assistant}{University of Minnesota}{Minneapolis, MN}{}{\vspace{3pt}
+\begin{itemize}
+    \item Taught multiple lectures with different sections of students, from engineering to business majors, personalizing the lecture depending on the particular section's strengths and weaknesses.
+    \item Evaluated students in both their ability to function in groups as well as their individual aptitude in problem solving and mathematics.
+    \item Hosted one-on-one meetings with students to aid them in their understanding of the subject and help prepare them for future assignments.
+\end{itemize}
+}
+
+
+\cventrylong{2010--2012}{ Research Assistant}{Minnesota State College}{Mankato, MN}{}{\vspace{3pt}
+\begin{itemize}
+	\item  Maintained and ran  a 400 KeV Van de Graaff accelerator. This included both working directly with the accelerator itself as well as diagnosing and fixing issues with the control modules components, which required skilled use of circuit
+diagrams. 
+    \item  Investigation of an existing apparatus to harvest the nitrogen-13 created from a graphite target. This included fabrication, testing and revising the original plans to make it function safely and effectively. 
+\end{itemize}
+}
+
+\cventrylong{2010--2012}{Teaching Assistant}{Minnesota State College}{Mankato, MN}{}{\vspace{3pt}
+\begin{itemize}
+    \item Organized and led introductory physics classes to prepare students for more mathematically rigorous physics classes
+    \item Provided one-on-one coaching for physics and math students of all levels to help them excel in their classes.
+\end{itemize}
+}
+
+\vspace{6pt}
+
+\section{Professional affiliations}
+\vspace{6pt}
+\cventrylong{2013--}{{CERN  (European  Organization  for
+  Nuclear  Research)}}{}{}{}{}
+\vspace{6pt}
+
+
+
+\section{Conference and seminar presentations}
+\vspace{6pt}
+
+\cventrylong{Feb 2017}{High energy Seminar, University of Minnesota}{Minneapolis, MN}{}{}{}
+\cvline{}{\textit{Vector Boson transverse momentum measurements at the LHC and its comparison to models }}
+%\cvline{}{\textit{Searching for the stochastic gravitational-wave background in Advanced LIGO's first observing run}}
+\cventrylong{March 2017}{SMP-V: Vector Boson group meeting}{Geneva, Switzerland}{}{}{}
+\cvline{}{
+   \textit{Measurement of $\mathrm{d}\sigma/\mathrm{d}\phi^*$ and
+   $\mathrm{d}^{2}\sigma/\mathrm{d}^{2}\phi^*\,\mathrm{d}|y|$}
+}
+\vspace{6pt}
+
+
+
+
+% Publications from a BibTeX file without multibib
+%  for numerical labels: \renewcommand{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}% CONSIDER MERGING WITH PREAMBLE PART
+%  to redefine the heading string ("Publications"): \renewcommand{\refname}{Articles}
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{publications}                        % 'publications' is the name of a BibTeX file
+
+% Publications from a BibTeX file using the multibib package
+%\section{Publications}
+%\nocitebook{book1,book2}
+%\bibliographystylebook{plain}
+%\bibliographybook{publications}                   % 'publications' is the name of a BibTeX file
+%\nocitemisc{misc1,misc2,misc3}
+%\bibliographystylemisc{plain}
+%\bibliographymisc{publications}                   % 'publications' is the name of a BibTeX file
+
+%-----       letter       ---------------------------------------------------------
+
+\section{Selected Publications}
+%\begin{center}
+
+%\end{center}
+\vspace{9pt}
+\begin{itemize}
+\vspace{6pt}
+
+\item \textit{Measurement of differential cross sections in the $\phi$*}, A.~M.~Sirunyan, \textit{et al.}, J. High Energ. Phys. (2018) 2018: 172. https://doi.org/10.1007/JHEP03(2018)172
+\vspace{6pt}
+
+\item \textit{Student research with 400keV beams: 13N radioisotope production target development}, L. ~Che ~Fru., \textit{et al.}, Production Target Development. AIP Conference Proceedings, 1525(1), 731-735.
+
+
+%/\item \paper{Prospects for searches for long-duration gravitational-waves without time slides.}{M.~Coughlin, P.~Meyers, \emph{ et al., }}{http://journals.aps.org/prd/abstract/10.1103/PhysRevD.92.043007}{Phys.~Rev.~D}{92(4)}{043007}{2015}{1505.00205}
+\vspace{6pt}
+\end{itemize}
+
+
+%/\cventrylong{2017}{Doctoral Dissertation Fellowship}{University of Minnesota}{}{}{Competitive fellowship given to outstanding PhD students to devote time to research with the goal of finishing their dissertation in the next calendar year.}
+%/\vspace{6pt}
+
+
+
+% \section{Activities and Interests}
+% \vspace{6pt}
+% \cvline{Running}{\small Ran varsity track and cross-country in high school and college. Currently still running competitively.}
+% \cvline{Clarinet}{\small Played clarinet for 15 years, including in competitive ensembles and small chamber groups.}
+% \cvline{Soccer}{\small Enjoy watching, playing, and finding creative ways to injure myself.}
+% \cvline{Others}{\small NBA Basketball, reading all genres of fiction, listening to all types of music, winter}
+% \vspace{6pt}
+\end{document}
+
+
+%% end of file `template.tex'.
